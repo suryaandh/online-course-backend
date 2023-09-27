@@ -1,6 +1,6 @@
-const CourseController = require('./courseController');
-const StudentController = require('./studentController');
-const EnrollmentController = require('./enrollmentController');
+const CourseController = require('./CourseController');
+const StudentController = require('./StudentController');
+const EnrollmentController = require('./EnrollmentController');
 
 module.exports = {
   CourseController,

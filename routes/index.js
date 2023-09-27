@@ -12,8 +12,8 @@ route.get('/', () => {
 })
 
 route.use('/courses', courseRoutes);
-route.use('/student', studentRoutes);
-route.use('/enrollment', enrollmentRoutes);
+route.use('/students', studentRoutes);
+route.use('/enrollments', enrollmentRoutes);
 
 
 module.exports = route;
