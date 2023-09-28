@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Detail</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <style>
+    .card {
+      border: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-black {
+      background-color: black;
+      color: white;
+    }
+
+    /* Tambahan: Gaya hover saat kursor di atas tombol */
+    .btn-black:hover {
+      background-color: #333;
+      /* Warna latar belakang yang berubah saat hover */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR START -->
+  <div class="container my-3">
+    <div class="row text-center">
+      <div class="col-12">
+        <h2>Course Dashboard</h2>
+        <p>Welcome to our course</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand text-white" href="/">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link text-white active" aria-current="page" href="/courses">Courses</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/students">Student</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- NAVBAR END -->
+
+    <div class="container mt-5">
+      <% if (courses) { %>
+        <div class="row">
+          <div class="col-md-4">
+            <img src="<%= courses.courseImage %>" class=" img-fluid" alt="<%= courses.courseName %>">
+          </div>
+          <div class="col-md-8">
+            <h1>
+              <%= courses.courseName %>
+            </h1>
+            <p>
+              <%= courses.description %>
+            </p>
+            <p>Instructor: <%= courses.instructor %>
+            </p>
+          </div>
+
+          <div class="row my-3">
+            <button type="button" class="btn btn-primary btn-black mt-3 btn-lg" data-bs-toggle="modal"
+              data-bs-target="#editCourseModal-<%= courses.id %>">
+              Edit
+            </button>
+            <!-- Modal Edit Course -->
+            <div class="modal fade" id="editCourseModal-<%= courses.id %>" tabindex="-1"
+              aria-labelledby="editCourseModalLabel-<%= courses.id %>" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="editCourseModalLabel-<%= courses.id %>">Edit Course</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Form untuk mengedit kursus -->
+                    <form action="/courses/update/<%= courses.id %>" method="POST">
+                      <div class="mb-3">
+                        <label for="editCourseName-<%= courses.id %>" class="form-label">Course Name</label>
+                        <input type="text" class="form-control" id="editCourseName-<%= courses.id %>" name="courseName"
+                          value="<%= courses.courseName %>" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="editDescription-<%= courses.id %>" class="form-label">Description</label>
+                        <textarea class="form-control" id="editDescription-<%= courses.id %>" name="description"
+                          rows="4" required><%= courses.description %></textarea>
+                      </div>
+                      <div class="mb-3">
+                        <label for="editInstructor-<%= courses.id %>" class="form-label">Instructor</label>
+                        <input type="text" class="form-control" id="editInstructor-<%= courses.id %>" name="instructor"
+                          value="<%= courses.instructor %>" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="editCourseImage-<%= courses.id %>" class="form-label">Course Image URL</label>
+                        <input type="text" class="form-control" id="editCourseImage-<%= courses.id %>"
+                          name="courseImage" value="<%= courses.courseImage %>" required>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <a href="/courses/delete/<%= courses.id %>" class="btn btn-danger  mt-3 btn-lg">Delete</a>
+          </div>
+        </div>
+
+
+        <h2 class="mt-4">Students Enrolled</h2>
+        <div class="row mt-3">
+          <% courses.students.forEach(student=> { %>
+            <div class="col-md-4">
+              <div class="card">
+                <img src="<%= student.profileImage %>" class="card-img-top" alt="<%= student.studentName %>">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <%= student.studentName %>
+                  </h5>
+                  <p class="card-text">
+                    <%= student.email %>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <% }); %>
+        </div>
+        <% } %>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</html>
