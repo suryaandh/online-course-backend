@@ -10,7 +10,8 @@ class CourseController {
           ]
         }
       );
-      res.json(courses);
+      // res.json(courses);
+      res.render('course.ejs', { courses: courses });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Internal Server Error' });
@@ -23,7 +24,8 @@ class CourseController {
       const courses = await course.create({
         courseName, description, instructor, courseImage
       })
-      res.status(201).json(courses);
+      // res.status(201).json(courses);
+      res.redirect('/courses')
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Internal Server Error' });
@@ -42,7 +44,8 @@ class CourseController {
       });
 
       if (courses[0] === 1) {
-        res.json({ message: 'Course updated successfully' });
+        // res.json({ message: 'Course updated successfully' });
+        res.redirect('/courses')
       } else {
         res.status(404).json({ message: 'Course not found' });
       }
@@ -60,7 +63,8 @@ class CourseController {
       });
 
       if (courses === 1) {
-        res.json({ message: 'Course deleted successfully' });
+        res.redirect('/courses')
+        // res.json({ message: 'Course deleted successfully' });
       } else {
         res.status(404).json({ message: 'Course not found' });
       }
@@ -83,8 +87,8 @@ class CourseController {
         ],
       });
 
-      if (courses) {
-        res.json(courses);
+      if (course) {
+        res.render('detailCourse.ejs', { courses: courses });
       } else {
         res.status(404).json({ message: 'Course not found' });
       }

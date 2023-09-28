@@ -5,10 +5,11 @@ const studentRoutes = require('./student');
 const enrollmentRoutes = require('./enrollment');
 
 
-route.get('/', () => {
-  res.json({
-    message: "Hello world"
-  })
+route.get('/', (req, res) => {
+  // res.json({
+  //   message: "Hello world"
+  // })
+  res.render('index.ejs')
 })
 
 route.use('/courses', courseRoutes);

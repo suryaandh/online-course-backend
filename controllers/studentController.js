@@ -9,7 +9,8 @@ class StudentController {
           ['id', 'asc']
         ]
       });
-      res.json(students);
+      // res.json(students);
+      res.render('student.ejs', { students: students })
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Internal Server Error' });
@@ -22,7 +23,8 @@ class StudentController {
       const students = await student.create({
         studentName, email, dateOfBirth, address, profileImage
       })
-      res.status(201).json(students);
+      // res.status(201).json(students);
+      res.redirect('/students');
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Internal Server Error' });
@@ -41,7 +43,8 @@ class StudentController {
       });
 
       if (students[0] === 1) {
-        res.json({ message: 'Student updated successfully' });
+        // res.json({ message: 'Student updated successfully' });
+        res.redirect('/students')
       } else {
         res.status(404).json({ message: 'Student not found' });
       }
@@ -59,7 +62,8 @@ class StudentController {
       });
 
       if (students === 1) {
-        res.json({ message: 'Student deleted successfully' });
+        // res.json({ message: 'Student deleted successfully' });
+        res.redirect('/students')
       } else {
         res.status(404).json({ message: 'Student not found' });
       }
@@ -83,7 +87,8 @@ class StudentController {
       });
 
       if (students) {
-        res.json(students);
+        // res.json(students);
+        res.render('detailStudent', { students: students });
       } else {
         res.status(404).json({ message: 'Student not found' });
       }

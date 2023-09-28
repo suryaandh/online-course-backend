@@ -1,4 +1,4 @@
-const { enrollment } = require('../models');
+const { course, student, enrollment } = require('../models');
 
 class EnrollmentController {
   static async getAllEnrollments(req, res) {
@@ -6,7 +6,11 @@ class EnrollmentController {
       const enrollments = await enrollment.findAll({
         order: [
           ['id', 'asc']
-        ]
+        ],
+        include: [
+          { model: course },
+          { model: student },
+        ],
       });
       res.json(enrollments);
     } catch (error) {
