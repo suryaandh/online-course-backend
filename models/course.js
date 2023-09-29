@@ -17,14 +17,61 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  course.init({
-    courseName: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    instructor: DataTypes.STRING,
-    courseImage: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'course',
-  });
+  course.init(
+    {
+      courseName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: true,
+          len: [1, 255],
+        },
+      },
+      description: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+          notEmpty: true,
+        },
+      },
+      instructor: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: true,
+          len: [3, 255],
+        },
+      },
+      courseImage: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: true,
+          isUrl: true,
+        },
+      },
+    },
+    {
+      hooks: {
+        beforeCreate: (course, options) => {
+          if (!course.courseImage || course.courseImage === '') {
+            course.courseImage = 'https://placeholder.com/600x400';
+          }
+          if (!course.description || course.description === '') {
+            course.description = 'Deskripsi default jika tidak ada.';
+          }
+          if (!course.instructor || course.instructor === '') {
+            course.instructor = 'Instruktur Default';
+          }
+          if (!course.courseName || course.courseName === '') {
+            course.courseName = 'Kursus Default';
+          }
+        },
+      },
+      sequelize,
+      modelName: 'course',
+    }
+  );
+
   return course;
 };
