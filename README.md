@@ -7,7 +7,7 @@
    - Clone repositori ini ke dalam direktori lokal Anda:
 
      ```
-     git clone https://github.com/nama-username/repo.git
+     git clone https://github.com/suryaandh/online-course-backend.git
      ```
 
 2. **Pindah ke Direktori Proyek**
@@ -61,23 +61,25 @@ Berikut adalah dokumentasi API yang tersedia dalam proyek ini:
 
 ## Courses
 
-| Endpoint                | Metode | Deskripsi                                                                |
-| ----------------------- | ------ | ------------------------------------------------------------------------ |
-| `/courses/`             | GET    | Mendapatkan semua kursus yang tersedia.                                  |
-| `/courses/:id/students` | GET    | Mendapatkan daftar siswa yang terdaftar dalam kursus dengan ID tertentu. |
-| `/courses/create`       | POST   | Membuat kursus baru.                                                     |
-| `/courses/update/:id`   | POST   | Memperbarui kursus yang ada berdasarkan ID tertentu.                     |
-| `/courses/delete/:id`   | GET    | Menghapus kursus berdasarkan ID tertentu.                                |
+| Endpoint                | Metode | Deskripsi                                                                   |
+| ----------------------- | ------ | --------------------------------------------------------------------------- |
+| `/courses/`             | GET    | Mendapatkan semua course yang tersedia.                                     |
+| `/courses/:id/students` | GET    | Mendapatkan daftar students yang terdaftar dalam course dengan ID tertentu. |
+| `/courses/create`       | POST   | Membuat course baru.                                                        |
+| `/courses/update/:id`   | POST   | Memperbarui course yang ada berdasarkan ID tertentu.                        |
+| `/courses/delete/:id`   | GET    | Menghapus course berdasarkan ID tertentu.                                   |
+| `/courses/:id/students` | GET    | Mendapatkan students yang mengikuti course berdasarkan ID tertentu.         |
 
 ## Students
 
-| Endpoint                | Metode | Deskripsi                                                                 |
-| ----------------------- | ------ | ------------------------------------------------------------------------- |
-| `/students/`            | GET    | Mendapatkan semua mahasiswa yang terdaftar.                               |
-| `/students/create`      | POST   | Membuat mahasiswa baru.                                                   |
-| `/students/:id/courses` | GET    | Mendapatkan daftar kursus yang diikuti oleh mahasiswa dengan ID tertentu. |
-| `/students/update/:id`  | POST   | Memperbarui data mahasiswa berdasarkan ID tertentu.                       |
-| `/students/delete/:id`  | GET    | Menghapus mahasiswa berdasarkan ID tertentu.                              |
+| Endpoint                | Metode | Deskripsi                                                                |
+| ----------------------- | ------ | ------------------------------------------------------------------------ |
+| `/students/`            | GET    | Mendapatkan semua students yang terdaftar.                               |
+| `/students/create`      | POST   | Membuat students baru.                                                   |
+| `/students/:id/courses` | GET    | Mendapatkan daftar kursus yang diikuti oleh students dengan ID tertentu. |
+| `/students/update/:id`  | POST   | Memperbarui data students berdasarkan ID tertentu.                       |
+| `/students/delete/:id`  | GET    | Menghapus students berdasarkan ID tertentu.                              |
+| `/students/:id/courses` | GET    | Mendapatkan students mengikuti course berdasarkan ID tertentu.           |
 
 ## Enrollments
 

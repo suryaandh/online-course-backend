@@ -12,7 +12,32 @@ class EnrollmentController {
           { model: student },
         ],
       });
-      res.json(enrollments);
+      // res.json(enrollments);
+      // const uniqueStudents = Array.from(new Set(enrollments.map(enrollment => enrollment.student.id)));
+      const uniqueStudents = new Set();
+
+      const filteredEnrollments = enrollments.filter(enrollment => {
+        if (!uniqueStudents.has(enrollment.student.id)) {
+          uniqueStudents.add(enrollment.student.id);
+          return true;
+        }
+        return false;
+      });
+
+      // const course = await course.findAll();
+
+      // const students = await student.findAll({
+      //   // where: {
+      //   //   id: Array.from(uniqueStudents),
+      //   // },
+      // });
+      // console.log('uniqueStudents:', Array.from(uniqueStudents));
+      // console.log('filteredEnrollments length:', filteredEnrollments.length);
+
+      // Extract student data and log it
+
+      res.render('enrollment.ejs', { enrollments: filteredEnrollments });
+
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Internal Server Error' });
@@ -26,7 +51,8 @@ class EnrollmentController {
         courseId: +courseId,
         studentId: +studentId,
       })
-      res.status(201).json(enrollments);
+      // res.status(201).json(enrollments);
+      res.redirect('/')
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Internal Server Error' });
