@@ -1,0 +1,30 @@
+Table course {
+  id integer [pk]
+  courseName varchar
+  description varchar
+  instructor varchar
+  courseImage varchar
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table students {
+  id integer [pk]
+  email varchar
+  dateOfBirth varchar
+  address varchar
+  profileImage varchar
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table enrollment {
+  id integer [pk]
+  courseId integer 
+  studentId integer 
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Ref: course.id <> enrollment.courseId
+Ref: students.id <> enrollment.studentId
