@@ -1,0 +1,76 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Enrollment</title>
+      <!-- Bootstrap CSS atau CSS lainnya bisa dimasukkan di sini jika diperlukan -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    </head>
+  <body>
+    <!-- NAVBAR START -->
+  <div class="container my-3">
+    <div class="row text-center">
+      <div class="col-12">
+        <h2>Enrollment Dashboard</h2>
+        <p>Welcome to our course</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand text-white" href="/">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link text-white active" aria-current="page" href="/courses">Courses</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/students">Student</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/enrollments">Enrollment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- NAVBAR END -->
+    
+      <div class="container mt-5">
+          <h1>Enroll Student in a Course</h1>
+          <form action="/enrollments/create" method="POST">
+              <div class="mb-3">
+                  <label for="courseId" class="form-label">Select Course:</label>
+                  <select class="form-select" id="courseId" name="courseId" required>
+                      <% enrollments.forEach(enrollment => { %>
+                          <option value="<%= enrollment.course.id %>"><%= enrollment.course.courseName %></option>
+                      <% }); %>
+                  </select>
+              </div>
+              <div class="mb-3">
+                  <label for="studentId" class="form-label">Select Student:</label>
+                  <select class="form-select" id="studentId" name="studentId" required>
+                      <% enrollments.forEach(enrollment => { %>
+                          <option value="<%= enrollment.student.id %>"><%= enrollment.student.studentName %></option>
+                      <% }); %>
+                  </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Enroll</button>
+          </form>
+      </div>
+      <!-- Bootstrap JavaScript atau JavaScript lainnya bisa dimasukkan di sini jika diperlukan -->
+ 
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </html>

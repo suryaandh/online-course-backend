@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,13 +21,14 @@
     }
   </style>
 </head>
+
 <body>
   <!-- NAVBAR START -->
   <div class="container my-3">
     <div class="row text-center">
       <div class="col-12">
-        <h2>Student Dashboard</h2>
-        <p>Welcome to our student portal</p>
+        <h2>Enrollment Dashboard</h2>
+        <p>Welcome to our course</p>
       </div>
     </div>
 
@@ -41,10 +43,13 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link text-white " aria-current="page" href="/courses">Courses</a>
+                <a class="nav-link text-white active" aria-current="page" href="/courses">Courses</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white active" href="/students">Student</a>
+                <a class="nav-link text-white" href="/students">Student</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/enrollments">Enrollment</a>
               </li>
             </ul>
           </div>
@@ -86,7 +91,7 @@
             <form action="/students/create" method="POST">
               <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+                <input type="text" class="form-control" id="studentName" name="studentName" required>
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
@@ -112,10 +117,19 @@
     </div>
     <!-- CREATE DATA END -->
 
+    <div class="mb-3">
+      <label for="studentId" class="form-label">Select Student:</label>
+      <select class="form-select" id="studentId" name="studentId" required>
+          <% students.forEach(student => { %>
+              <option value="<%= student.id %>"><%= student.studentName %></option>
+          <% }); %>
+      </select>
+  </div>
+
     <!-- CARD DATA STUDENT -->
     <div class="container">
       <div class="row">
-        <% students.forEach(student => { %>
+        <% students.forEach(student=> { %>
           <div class="col-md-4 mb-4">
             <div class="card">
               <img src="<%= student.profileImage %>" class="card-img-top" alt="<%= student.name %>"
@@ -137,7 +151,7 @@
               </div>
             </div>
           </div>
-        <% }); %>
+          <% }); %>
       </div>
     </div>
     <!-- CARD DATA STUDENT END -->
@@ -149,4 +163,5 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 </body>
+
 </html>
