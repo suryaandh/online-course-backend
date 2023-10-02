@@ -27,7 +27,7 @@
   <div class="container my-3">
     <div class="row text-center">
       <div class="col-12">
-        <h2>Enrollment Dashboard</h2>
+        <h2>Student Dashboard</h2>
         <p>Welcome to our course</p>
       </div>
     </div>
@@ -117,19 +117,10 @@
     </div>
     <!-- CREATE DATA END -->
 
-    <div class="mb-3">
-      <label for="studentId" class="form-label">Select Student:</label>
-      <select class="form-select" id="studentId" name="studentId" required>
-          <% students.forEach(student => { %>
-              <option value="<%= student.id %>"><%= student.studentName %></option>
-          <% }); %>
-      </select>
-  </div>
-
     <!-- CARD DATA STUDENT -->
     <div class="container">
       <div class="row">
-        <% students.forEach(student=> { %>
+        <% students.forEach(student => { %>
           <div class="col-md-4 mb-4">
             <div class="card">
               <img src="<%= student.profileImage %>" class="card-img-top" alt="<%= student.name %>"

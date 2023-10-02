@@ -97,6 +97,49 @@ class StudentController {
       res.status(500).json({ message: 'Internal Server Error' });
     }
   }
+
+  static async getRegisterCourse(req, res) {
+    try {
+      const id = +req.params.id;
+      const courses = await course.findAll();
+      const students = await student.findByPk(id);
+      res.render('registerCourse.ejs', { courses, students });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  }
+
+  static async registerCourse(req, res) {
+    try {
+      const studentId = +req.params.id;
+      const courseId = +req.params.courseId;
+
+      // Periksa apakah mahasiswa sudah terdaftar pada kursus ini
+      const enrollmentExists = await enrollment.findOne({
+        where: {
+          studentId,
+          courseId,
+        },
+      });
+
+      if (enrollmentExists) {
+        return res.status(400).json({ message: 'Student is already enrolled in this course' });
+      }
+
+      await enrollment.create({
+        studentId,
+        courseId,
+      });
+
+      res.redirect('/students')
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+
+  }
 }
+
 
 module.exports = StudentController;

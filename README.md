@@ -68,18 +68,20 @@ Berikut adalah dokumentasi API yang tersedia dalam proyek ini:
 | `/courses/create`       | POST   | Membuat course baru.                                                        |
 | `/courses/update/:id`   | POST   | Memperbarui course yang ada berdasarkan ID tertentu.                        |
 | `/courses/delete/:id`   | GET    | Menghapus course berdasarkan ID tertentu.                                   |
-| `/courses/:id/students` | GET    | Mendapatkan students yang mengikuti course berdasarkan ID tertentu.         |
 
 ## Students
 
-| Endpoint                | Metode | Deskripsi                                                                |
-| ----------------------- | ------ | ------------------------------------------------------------------------ |
-| `/students/`            | GET    | Mendapatkan semua students yang terdaftar.                               |
-| `/students/create`      | POST   | Membuat students baru.                                                   |
-| `/students/:id/courses` | GET    | Mendapatkan daftar kursus yang diikuti oleh students dengan ID tertentu. |
-| `/students/update/:id`  | POST   | Memperbarui data students berdasarkan ID tertentu.                       |
-| `/students/delete/:id`  | GET    | Menghapus students berdasarkan ID tertentu.                              |
-| `/students/:id/courses` | GET    | Mendapatkan students mengikuti course berdasarkan ID tertentu.           |
+| Endpoint                         | Metode | Deskripsi                                                                |
+| -------------------------------- | ------ | ------------------------------------------------------------------------ |
+| `/students/`                     | GET    | Mendapatkan semua students yang terdaftar.                               |
+| `/students/create`               | POST   | Membuat students baru.                                                   |
+| `/students/:id/courses`          | GET    | Mendapatkan daftar kursus yang diikuti oleh students dengan ID tertentu. |
+| `/students/update/:id`           | POST   | Memperbarui data students berdasarkan ID tertentu.                       |
+| `/students/delete/:id`           | GET    | Menghapus students berdasarkan ID tertentu.                              |
+| `/students/:id/courses`          | GET    | Mendapatkan students mengikuti course berdasarkan ID tertentu.           |
+| `/students/delete/:id`           | GET    | Menghapus students berdasarkan ID tertentu.                              |
+| `/students/:id/enroll`           | GET    | Mengambil daftar kursus yang tersedia untuk pendaftaran mahasiswa.       |
+| `/students/:id/enroll/:courseId` | GET    | Mendaftarkan mahasiswa untuk kursus tertentu.                            |
 
 ## Enrollments
 

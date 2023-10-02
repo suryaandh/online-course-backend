@@ -17,22 +17,24 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  student.init({
-    studentName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-        len: [1, 255],
+  student.init(
+    {
+      studentName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: true,
+          len: [1, 255],
+        },
       },
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        notEmpty: true,
-        isEmail: true,
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+          notEmpty: true,
+          isEmail: true,
+        },
       },
       dateOfBirth: {
         type: DataTypes.DATE,
@@ -53,22 +55,22 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-  }, {
-    hooks: {
-      beforeCreate: (student, options) => {
-        if (!student.studentName || student.studentName === '') {
-          student.studentName = 'Nama Siswa Default';
-        }
-        if (!student.address || student.address === '') {
-          student.address = 'Alamat Default';
-        }
-        if (!student.profileImage || student.profileImage === '') {
-          student.profileImage = 'https://placeholder.com/600x400';
-        }
+    {
+      hooks: {
+        beforeCreate: (student, options) => {
+          if (!student.studentName || student.studentName === '') {
+            student.studentName = 'Nama Siswa Default';
+          }
+          if (!student.address || student.address === '') {
+            student.address = 'Alamat Default';
+          }
+          if (!student.profileImage || student.profileImage === '') {
+            student.profileImage = 'https://placeholder.com/600x400';
+          }
+        },
       },
-    },
-    sequelize,
-    modelName: 'student',
-  });
+      sequelize,
+      modelName: 'student',
+    });
   return student;
 };
