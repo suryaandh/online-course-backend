@@ -51,8 +51,8 @@ class EnrollmentController {
         courseId: +courseId,
         studentId: +studentId,
       })
-      // res.status(201).json(enrollments);
-      res.redirect('/')
+      res.status(201).json(enrollments);
+      // res.redirect('/')
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Internal Server Error' });

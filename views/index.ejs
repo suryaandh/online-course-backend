@@ -4,22 +4,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+  <title>Online Course Landing Page</title>
 
   <!-- CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <style>
+    /* Add custom styles here */
+    .jumbotron {
+      background-image: url('https://images.unsplash.com/photo-1607705703571-c5a8695f18f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      padding: 100px 0;
+    }
 
+    .course-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: transform 0.2s;
+    }
 
+    .course-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .course-card h4 {
+      color: #333;
+    }
+
+    .course-card p {
+      color: #777;
+    }
+
+    .course-card a.btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    .course-card a.btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+  </style>
 </head>
 
 <body>
-   <!-- NAVBAR START -->
-   <div class="container my-3">
+  <!-- NAVBAR START -->
+  <div class="container my-3">
     <div class="row text-center">
       <div class="col-12">
-        <h2>Enrollment Dashboard</h2>
-        <p>Welcome to our course</p>
+        <h2>Online Course Platform</h2>
+        <p>Welcome to our online courses</p>
       </div>
     </div>
 
@@ -40,7 +80,10 @@
                 <a class="nav-link text-white" href="/students">Student</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="/enrollments">Enrollment</a>
+                <a class="nav-link text-white" href="#about-us">About Us</a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link text-white" href="#contact-us">Contact Us</a> -->
               </li>
             </ul>
           </div>
@@ -48,18 +91,81 @@
       </nav>
     </div>
     <!-- NAVBAR END -->
-    
-    <div class="row">
-      <div class="col-12 my-2">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores harum mollitia qui sint incidunt distinctio
-        nostrum natus obcaecati dignissimos tempore corrupti sunt ducimus sequi perferendis, facere quas? Maxime, sint
-        minima! Odio officiis sunt quibusdam suscipit mollitia aspernatur exercitationem cum, dignissimos aliquid
-        numquam nisi tempora nemo quo dicta? Eos debitis est asperiores? Sequi deleniti ut totam natus facere odit
-        perferendis voluptatibus.
+
+    <!-- JUMBOTRON -->
+    <div class="jumbotron">
+      <div class="container text-center">
+        <h1 class="display-4">Unlock Your Potential</h1>
+        <p class="lead">Explore our wide range of online courses and take your skills to the next level.</p>
+        <a class="btn btn-primary btn-lg" href="/courses" role="button">Browse Courses</a>
       </div>
     </div>
 
-  </div>
+    <!-- ABOUT US -->
+    <div id="about-us" class="container my-4">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>About Us</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut scelerisque odio, et rhoncus sem. Sed
+            auctor ligula in turpis vehicula, eget tincidunt erat luctus. Sed in bibendum orci. Nunc consectetur auctor
+            justo, non finibus eros cursus eu.</p>
+        </div>
+        <div class="col-md-6">
+          <img src="https://plus.unsplash.com/premium_photo-1677529494239-682591edd525?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="About Us Image" class="img-fluid">
+        </div>
+      </div>
+    </div>
+
+    <!-- COURSE CARDS -->
+    <!-- <div class="row my-4">
+      <div class="col-12">
+        <h3>Featured Courses</h3>
+      </div>
+      <div class="col-md-4">
+        <div class="course-card">
+          <img src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Course 1">
+          <h4>Web Programming</h4>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur voluptas minima culpa, architecto, eaque voluptates quis repudiandae iste sit voluptatum saepe ratione distinctio, alias officia nisi fugit! Perferendis, ab incidunt!</p>
+          <a href="/course1-details" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="course-card">
+          <img src="https://images.unsplash.com/photo-1535016120720-40c646be5580?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Course 2">
+          <h4>Seni Visual</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam in fugit deserunt libero sequi dignissimos? Quidem animi libero error, consectetur, recusandae atque ipsa quae laudantium voluptate maiores sint aspernatur ad.</p>
+          <a href="/course2-details" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="course-card">
+          <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Course 3">
+          <h4>Ilmu Komputer</h4>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum ullam fugit corporis repudiandae, voluptate amet aliquid culpa velit iste eveniet, assumenda fuga doloremque dolore, harum architecto corrupti ipsa consequatur inventore!</p>
+          <a href="/course3-details" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- CONTACT US -->
+    <!-- <div id="contact-us" class="container my-4">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Contact Us</h3>
+          <p>If you have any questions or need assistance, please feel free to contact us using the information below:</p>
+          <ul>
+            <li>Email: <a href="mailto:info@example.com">info@example.com</a></li>
+            <li>Phone: +62 (123) 456-7890</li>
+            <li>Address: 123 Main Street, City, Country</li>
+          </ul>
+        </div>
+        <div class="col-md-6"> -->
+          <!-- Add a contact form here if needed -->
+        <!-- </div>
+      </div>
+    </div>
+
+  </div> -->
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
